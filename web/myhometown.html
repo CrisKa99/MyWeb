@@ -1,53 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>我的家乡</title>
-<style type="text/css">
-body,td,th {
-	font-size: x-large;
-}
-body {
-    background-image: url(../images/sky-background.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    text-align: left;
-}
-	*{cursor: url( ../images/cloud1-O6XNH.cur),auto;}
-	a {
-	cursor: url( ../images/cloud1-O6XNH.cur),auto;
-}
-	p {
-		cursor: url(../images/cloud1-O6XNH.cur),text;
-	}
-	
-</style>
+  <style>
+    body {
+      background-image: url(../images/sky-background.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      text-align: left;
+    }
+
+    * {
+      cursor: url(../images/cloud1-O6XNH.cur), auto;
+    }
+
+    a {
+      cursor: url(../images/cloud1-O6XNH.cur), auto;
+    }
+
+    p {
+      cursor: url(../images/cloud1-O6XNH.cur), text;
+    }
+
+    .image-gallery {
+      position: relative;
+      width: 100%;
+      height: 800px;
+      overflow: hidden;
+    }
+
+    .image-gallery img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .image-gallery .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+
+    .image-gallery .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #bbb;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .image-gallery .dot.active {
+      background-color: #333;
+    }
+  </style>
 </head>
-</html>
-<html>
-
 <body>
-<ul>
+  <h1 style="text-align: center; font-size: 72px; color: #FFFFFF;">我的家乡</h1>
+  <div class="image-gallery">
+    <img src="../images/013e2c5541ffaf0000019ae9746f35.jpg" alt="Image 1">
+    <img src="../images/10081f000001gqhic96E5_D_10000_1200.jpg" alt="Image 2">
+    <img src="../images/4574e75a708a6b23f2c68d7752c48883.jpg_r_1360x1360x95_faa648a3.jpg" alt="Image 3">
+    <img src="../images/v2-4fd114a54edeb5d48d10bf5b121eccb8_r.jpg" alt="Image 4">
 
-  <h1><strong><br>
-    <br>
-    <h1 style="text-align: center; font-size: 72px; color: #FFFFFF; font-family: '华文行楷';">我的家乡</h1></strong>
-  </h1>
-	<br>
-  <p style="color: #FFFFFF;"> 我来自山东烟台,一个美丽的临海城市<br>
-    <img src="../images/013e2c5541ffaf0000019ae9746f35.jpg@1280w_1l_2o_100sh.jpg" width="1280" height="854" alt=""/>
-    <figure style="color: #FFFFFF;">这是烟台金沙滩，我喜欢海浪亲吻脚背的感觉。我经常在海边漫步，拾起美丽的贝壳和好看的石头。
-    </figure>
+    <div class="dots">
+      <div class="dot active" onclick="changeImage(0)"></div>
+      <div class="dot" onclick="changeImage(1)"></div>
+      <div class="dot" onclick="changeImage(2)"></div>
+      <div class="dot" onclick="changeImage(3)"></div>
+    </div>
+  </div>
+
+  <script>
+    var images = document.querySelectorAll('.image-gallery img');
+    var dots = document.querySelectorAll('.image-gallery .dot');
+    var currentIndex = 0; 
+
+    images[currentIndex].style.opacity = 1;
+
+    function changeImage(index) {
+      images[currentIndex].style.opacity = 0;
+      dots[currentIndex].classList.remove('active');
+      currentIndex = index;
+      images[currentIndex].style.opacity = 1;
+      dots[currentIndex].classList.add('active');
+    }
+
+    setInterval(function() {
+      var nextIndex = (currentIndex + 1) % images.length;
+      changeImage(nextIndex);
+    }, 3000);
+  </script>
+
+  <h1 style="text-align: center; font-size: 48px; color: #FFFFFF;">我的家乡是山东烟台，一个美丽的临海城市。<br>
+    这里有神秘的蓬莱仙岛，有平坦的金沙滩，有戚继光故居……
+    <br>欢迎大家来烟台游玩！<br>
   
-    <img src="../images/10081f000001gqhic96E5_D_10000_1200.jpg" width="1800" height="1200" alt="" align="right"/><img src="../images/4574e75a708a6b23f2c68d7752c48883.jpg_r_1360x1360x95_faa648a3.jpg" width="1021" height="1360" alt=""/>
-    
-    <img src="../images/v2-4fd114a54edeb5d48d10bf5b121eccb8_r.jpg" width="1622" height="1079" alt="" align="right"/></p>
-<figure style="color: #FFFFFF;">这是五岳之首泰山。“会当凌绝顶，一览众山小。”登上泰山之巅，壮丽山河震撼人心。<br>
-</figure>
-
-  <a href="../index.html"><img src="../images/返回_爱给网_aigei_com (2).png" width="200" height="200" alt=""/></a>
-</ul>
+	<a href="../index.html"><img src="../images/返回_爱给网_aigei_com (2).png" width="200" height="200" alt=""/></a></h1>
 </body>
-
-
 </html>
